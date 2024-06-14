@@ -1,3 +1,0 @@
-[submodule "nvim_config"]
-	path = nvim_config
-	url = https://github.com/Strix-Vyxlor/nvim_config.git
