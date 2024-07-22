@@ -53,6 +53,7 @@ return {
     lualine.setup({
       options = {
         theme = my_lualine_theme,
+        extensions = { "fzf" },
       },
       sections = {
         lualine_x = {
