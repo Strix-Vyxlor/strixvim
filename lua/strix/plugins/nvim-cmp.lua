@@ -19,12 +19,11 @@ return {
     local lspkind = require("lspkind")
 
     require("luasnip.loaders.from_vscode").lazy_load()
-    
     cmp.setup({
       completion = {
         completeopt = "menu,menuone,preview,noselect",
       },
-      snippet = {
+    snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
         end,

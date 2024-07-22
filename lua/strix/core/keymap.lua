@@ -18,13 +18,16 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 -- lazy management --
 keymap.set("n", "<leader>ui", "<cmd>Lazy install<CR>",  { desc = "Install new plugins" })
 keymap.set("n", "<leader>uu", "<cmd>Lazy update<CR>", { desc = "Update plugins" })
+keymap.set("n", "<leader>us", "<cmd>Lazy sync<CR>", { desc = "Sync plugins" })
 keymap.set("n", "<leader>um", "<cmd>Lazy<CR>", { desc = "Open Lazy menu" })
 
 -- quiting --
 keymap.set("n", "<leader>qq", "<cmd>q<CR>", { desc = "quit" })
-keymap.set("n", "<leader>qs", "<cmd>wq<CR>", { desc = "save and quit" })
 keymap.set("n", "<leader>qf", "<cmd>q!<CR>", { desc = "force quit" })
 keymap.set("n", "<leader>qa", "<cmd>qa<CR>", { desc = "quit all panes" })
+keymap.set("n", "<leader>qs", "<cmd>wq<CR>", { desc = "save and quit" })
 
 -- save --
-keymap.set("n", "<leader>w", "<cmd>w<CR>", { desc = "save" })
+keymap.set("n", "<leader>ww", "<cmd>w<CR>", { desc = "Save current file" })
+keymap.set("n", "<leader>wa", "<cmd>wa<CR>", { desc = "Save all files" })
+
