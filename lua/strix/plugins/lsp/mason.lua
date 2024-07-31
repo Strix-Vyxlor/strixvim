@@ -22,13 +22,14 @@ return {
     mason_lspconfig.setup({
       ensure_installed = {
         "lua_ls",
-        "rnix"
+        "nil_ls"
       }
     })
 
     mason_tool_installer.setup({
       ensure_installed = {
         "stylua",
+        "nixpkgs-fmt",
       }
     })
   end

@@ -7,6 +7,7 @@ return {
     conform.setup({
       formatters_by_fr = {
         lua = { "stylua" },
+        nix = { "nixpkgs-fmt" }
       },
     })
 
