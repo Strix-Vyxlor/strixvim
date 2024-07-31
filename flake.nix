@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+    rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
   outputs = inputs@{ self, ... }: inputs.flake-utils.lib.eachDefaultSystem (system:
@@ -11,6 +12,7 @@
       lib = inputs.nixpkgs.lib;
       pkgs = import inputs.nixpkgs {
         system = system;
+        overlays = [ (import inputs.rust-overlay) ];
       };
 
       runDeps = with pkgs; [
@@ -18,6 +20,7 @@
         gnumake
         ripgrep
         fzf
+        rust-bin.stable.latest.default
       ];
 
       nvim = pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped
