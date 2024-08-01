@@ -23,6 +23,7 @@
         gnumake
         ripgrep
         fzf
+        lazygit
         unzip
         rust-bin.stable.latest.default
       ];
