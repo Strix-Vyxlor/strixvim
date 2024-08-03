@@ -25,8 +25,13 @@
         fzf
         lazygit
         unzip
+
+        nil
+        statix
+        deadnix
+        manix
+
         rust-bin.stable.latest.default
-        rust-analyzer
       ];
 
       nvim = pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped
