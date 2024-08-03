@@ -30,7 +30,9 @@
         statix
         deadnix
         manix
-        lua_ls
+        
+        lua54Packages.lua-lsp
+        stylua
 
         rust-bin.stable.latest.default
       ];
