@@ -13,7 +13,7 @@ end
 
 vim.opt.rtp:prepend(lazyPath)
 
-require("lazy").setup({ { import = "strix.plugins" }, { import = "strix.plugins.lsp" } }, {
+require("lazy").setup({ { import = "plugins" }, {
   checker = {
     enabled = true,
     notify = false,

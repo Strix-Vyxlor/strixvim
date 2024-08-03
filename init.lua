@@ -1,2 +1,3 @@
-require("strix.core")
-require("strix.lazy")
+require("options")
+require("keymap")
+require("lazy")
