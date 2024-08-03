@@ -103,5 +103,9 @@ return {
         })
       end,
     })
+
+    lspconfig.rust_analyzer.setup{
+      cmd = "/nix/store/s0xi0diqa3vyn7iwgjvxnrvabfkj3ad2-rust-analyzer-2024-07-22/bin/rust-analyzer",
+    }
   end,
 }
