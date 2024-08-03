@@ -24,6 +24,7 @@ return {
 
     -- Esthetic
     { "folke/trouble.nvim" },
+    { "lukas-reineke/lsp-format.nvim" },
 
     -- Misc
     {
