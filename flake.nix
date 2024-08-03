@@ -30,6 +30,7 @@
         statix
         deadnix
         manix
+        lua_ls
 
         rust-bin.stable.latest.default
       ];
