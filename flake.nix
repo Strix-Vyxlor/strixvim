@@ -31,7 +31,7 @@
         deadnix
         manix
         
-        lua54Packages.lua-lsp
+        lua53Packages.lua-lsp
         stylua
 
         rust-bin.stable.latest.default
