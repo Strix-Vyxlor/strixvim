@@ -34,6 +34,8 @@
         lua53Packages.lua-lsp
         stylua
 
+        clangd
+
         rust-bin.stable.latest.default
       ];
 
