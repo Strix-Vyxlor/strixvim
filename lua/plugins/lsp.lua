@@ -74,8 +74,8 @@ return {
 					nix = {
 						maxMemoryMB = 7680,
 						flake = {
-							autoArchive = true,
-							autoEvalInputs = true,
+							autoArchive = false,
+							autoEvalInputs = false,
 						},
 					},
 				},
@@ -104,10 +104,17 @@ return {
 		local opts = { silent = true }
 		vim.keymap.set("n", "<leader>mc", require("crates").show_popup, opts)
 
+		local luasnip = require("luasnip")
+
 		cmp.setup({
 			mapping = {
 				["<Tab>"] = cmp_action.luasnip_supertab(),
 				["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
+				["<C-b>"] = cmp.mapping.scroll_docs(-4),
+				["<C-f>"] = cmp.mapping.scroll_docs(4),
+				["<C-q>"] = cmp.mapping.complete(), -- show completion suggestions
+				["<C-e>"] = cmp.mapping.abort(), -- close completion window
+				["<CR>"] = cmp.mapping.confirm({ select = false }),
 			},
 			window = {
 				completion = {
@@ -116,6 +123,12 @@ return {
 					side_padding = 0,
 				},
 			},
+			sources = cmp.config.sources({
+				{ name = "nvim_lsp" },
+				{ name = "luasnip" }, -- snippets
+				{ name = "buffer" }, -- text within current buffer
+				{ name = "path" }, -- file system paths
+			}),
 			formatting = {
 				fields = { "kind", "abbr", "menu" },
 				format = function(entry, vim_item)

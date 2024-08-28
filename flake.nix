@@ -31,7 +31,7 @@
         deadnix
         manix
         
-        lua53Packages.lua-lsp
+        lua-langlage-server
         stylua
 
         libclang
