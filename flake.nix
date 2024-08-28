@@ -31,7 +31,7 @@
         deadnix
         manix
         
-        lua-langlage-server
+        lua-language-server
         stylua
 
         libclang
