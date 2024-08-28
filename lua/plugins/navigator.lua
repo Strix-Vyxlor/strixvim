@@ -4,7 +4,6 @@ return {
 	config = function()
 		local keymap = vim.keymap
 
-		keymap.del("n", "<C-e>")
 		keymap.del("n", "<C-i>")
 
 		keymap.set("n", "<C-m>", "<cmd>TmuxNavigateLeft<CR>", { desc = "window left" })
