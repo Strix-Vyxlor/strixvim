@@ -4,7 +4,6 @@ return {
 	config = function()
 		local keymap = vim.keymap
 
-		keymap.del("n", "<C-m>")
 		keymap.del("n", "<C-n>")
 		keymap.del("n", "<C-e>")
 		keymap.del("n", "<C-i>")

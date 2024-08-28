@@ -16,7 +16,7 @@ keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go te previous tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
 
 -- lazy management --
-keymap.set("n", "<leader>ui", "<cmd>Lazy install<CR>",  { desc = "Install new plugins" })
+keymap.set("n", "<leader>ui", "<cmd>Lazy install<CR>", { desc = "Install new plugins" })
 keymap.set("n", "<leader>uu", "<cmd>Lazy update<CR>", { desc = "Update plugins" })
 keymap.set("n", "<leader>us", "<cmd>Lazy sync<CR>", { desc = "Sync plugins" })
 keymap.set("n", "<leader>um", "<cmd>Lazy<CR>", { desc = "Open Lazy menu" })
@@ -30,4 +30,3 @@ keymap.set("n", "<leader>qs", "<cmd>wq<CR>", { desc = "save and quit" })
 -- save --
 keymap.set("n", "<leader>ww", "<cmd>w<CR>", { desc = "Save current file" })
 keymap.set("n", "<leader>wa", "<cmd>wa<CR>", { desc = "Save all files" })
-
