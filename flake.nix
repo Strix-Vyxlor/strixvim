@@ -31,7 +31,7 @@
         deadnix
         manix
 
-        nodePackages.vscode-json-languageserver
+        vscode-langservers-extracted
         yaml-language-server
         lua-language-server
         stylua
