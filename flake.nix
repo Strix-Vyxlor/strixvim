@@ -30,7 +30,8 @@
         statix
         deadnix
         manix
-        
+
+        nodePackages.vscode-json-languageserver
         yaml-language-server
         lua-language-server
         stylua
