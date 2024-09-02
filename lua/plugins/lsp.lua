@@ -66,6 +66,8 @@ return {
 			"lua_ls",
 			"rust_analyzer",
 			"zls",
+			"yamlls",
+			"jsonls",
 		})
 
 		require("lspconfig").nil_ls.setup({
