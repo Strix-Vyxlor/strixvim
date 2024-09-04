@@ -15,8 +15,9 @@ return {
 						},
 					},
 				},
-				["core.completion"] = {},
-				["core.integrations.nvim-cmp"] = {},
+				["core.completion"] = {
+					engine = "nvim-cmp",
+				},
 				["core.export"] = {},
 			},
 		})
