@@ -21,12 +21,11 @@ return {
 					},
 				},
 				["core.export"] = {},
-				["core.keybinds"] = {
-					config = {
-						neorg_leader = "<C-n>",
-					},
-				},
 			},
 		})
+
+		local keymap = vim.keymap
+
+		keymap.set("n", "<leader>nn", "<Plug>(neorg.dirman.new-note)")
 	end,
 }
