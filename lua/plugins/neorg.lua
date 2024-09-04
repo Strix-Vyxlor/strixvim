@@ -32,5 +32,6 @@ return {
 		local keymap = vim.keymap
 
 		keymap.set("n", "<leader>nn", "<Plug>(neorg.dirman.new-note)")
+		keymap.set("n", "<leader>ni", "<Cmd>Neorg index<CR>")
 	end,
 }
