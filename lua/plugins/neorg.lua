@@ -21,6 +21,11 @@ return {
 					},
 				},
 				["core.export"] = {},
+				["core.keybinds"] = {
+					config = {
+						neorg_leader = "<C-n>",
+					},
+				},
 			},
 		})
 	end,
