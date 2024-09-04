@@ -24,6 +24,11 @@ return {
 			},
 		})
 
+		vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+			pattern = { "*.norg" },
+			command = "set conceallevel=3",
+		})
+
 		local keymap = vim.keymap
 
 		keymap.set("n", "<leader>nn", "<Plug>(neorg.dirman.new-note)")
