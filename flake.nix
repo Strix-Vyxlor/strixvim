@@ -25,6 +25,7 @@
         fzf
         lazygit
         unzip
+        lua54Packages.luarocks
 
         nil
         statix
