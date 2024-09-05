@@ -8,7 +8,7 @@ return {
 				["core.defaults"] = {},
 				["core.concealer"] = {
 					config = {
-						folds = false,
+						folds = true,
 						icon_preset = "diamond",
 					},
 				},
@@ -38,5 +38,8 @@ return {
 
 		keymap.set("n", "<leader>nn", "<Plug>(neorg.dirman.new-note)")
 		keymap.set("n", "<leader>ni", "<Cmd>Neorg index<CR>")
+		keymap.set("n", "<leader>ns", "<Cmd>Neorg workspace school<CR>")
+		keymap.set("n", "<leader>no", "<Cmd>Neorg workspace notes<CR>")
+		keymap.set("n", "<leader>nw", "<Cmd>Neorg workspace")
 	end,
 }
