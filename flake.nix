@@ -31,6 +31,7 @@
         statix
         deadnix
         manix
+        alejandra
 
         vscode-langservers-extracted
         yaml-language-server
