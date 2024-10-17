@@ -10,67 +10,71 @@
     };
   };
 
-  outputs = inputs@{ self, ... }: inputs.flake-utils.lib.eachDefaultSystem (system:
-    let
-      lib = inputs.nixpkgs.lib;
-      pkgs = import inputs.nixpkgs {
-        system = system;
-        overlays = [ (import inputs.rust-overlay) ];
-      };
-
-      runDeps = with pkgs; [
-        gcc
-        gnumake
-        ripgrep
-        fzf
-        lazygit
-        unzip
-        lua54Packages.luarocks
-
-        nil
-        statix
-        deadnix
-        manix
-        alejandra
-
-        vscode-langservers-extracted
-        yaml-language-server
-        lua-language-server
-        stylua
-
-        libclang
-        ccls
-
-        rust-bin.stable.latest.default
-        rust-analyzer
-      ];
-
-      nvim = pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped
-        (pkgs.neovimUtils.makeNeovimConfig {
-          customRC = ''
-            set runtimepath^=${./.}
-            source ${./.}/init.lua
-          '';
-        } // {
-          wrapperArgs = [
-            "--prefix"
-            "PATH"
-            ":"
-            "${lib.makeBinPath runDeps}"
-          ];
-      });
-    in {
-      overlays = {
-        neovim = _: _prev: {
-          neovim = nvim;
+  outputs = inputs @ {self, ...}:
+    inputs.flake-utils.lib.eachDefaultSystem (
+      system: let
+        lib = inputs.nixpkgs.lib;
+        pkgs = import inputs.nixpkgs {
+          system = system;
+          overlays = [(import inputs.rust-overlay)];
         };
-        default = self.overlays.neovim;
-      };
 
-      packages = rec {
-        neovim = nvim;
-        default = neovim;
-      };
-    }
-  );
+        runDeps = with pkgs; [
+          gcc
+          gnumake
+          ripgrep
+          fzf
+          lazygit
+          unzip
+          lua54Packages.luarocks
+
+          nil
+          statix
+          deadnix
+          manix
+          alejandra
+
+          vscode-langservers-extracted
+          yaml-language-server
+          lua-language-server
+          stylua
+          pyright
+
+          libclang
+          ccls
+
+          rust-bin.stable.latest.default
+          rust-analyzer
+        ];
+
+        nvim =
+          pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped
+          (pkgs.neovimUtils.makeNeovimConfig {
+              customRC = ''
+                set runtimepath^=${./.}
+                source ${./.}/init.lua
+              '';
+            }
+            // {
+              wrapperArgs = [
+                "--prefix"
+                "PATH"
+                ":"
+                "${lib.makeBinPath runDeps}"
+              ];
+            });
+      in {
+        overlays = {
+          neovim = _: _prev: {
+            neovim = nvim;
+          };
+          default = self.overlays.neovim;
+        };
+
+        packages = rec {
+          neovim = nvim;
+          default = neovim;
+        };
+      }
+    );
 }
