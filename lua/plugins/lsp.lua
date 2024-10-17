@@ -68,7 +68,7 @@ return {
 			"zls",
 			"yamlls",
 			"jsonls",
-			"pyricht",
+			"pyright",
 		})
 
 		require("lspconfig").nil_ls.setup({
