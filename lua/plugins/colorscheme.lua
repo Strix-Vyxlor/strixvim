@@ -16,7 +16,7 @@ return {
 		require("base16-colorscheme").setup({
 			base00 = "#271815",
 			base01 = "#1e100d",
-			base02 = "#301915",
+			base02 = "#5a0e09",
 			base03 = "#473532",
 			base04 = "#bdaba8",
 			base05 = "#ffedea",
