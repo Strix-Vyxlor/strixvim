@@ -50,8 +50,8 @@ return {
 
 		require("neodev").setup({})
 
-		--lsp.preset("recommended")
-		lsp.nvim_workspace()
+		-- lsp.preset("recommended")
+		-- lsp.nvim_workspace()
 		lsp.set_preferences({
 			sign_icons = {
 				error = "✘",
