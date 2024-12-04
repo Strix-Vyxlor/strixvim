@@ -3,8 +3,11 @@ return {
   config = function()
     local notify = require("notify")
 
+    vim.notify = notify
+
     notify.setup({
-      render = "wrapped-compact",
+      render = "default",
+      stages = "slide",
       timeout = 2500,
     })
   end
