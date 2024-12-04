@@ -52,14 +52,15 @@ return {
 
 		-- lsp.preset("recommended")
 		-- lsp.nvim_workspace()
-		lsp.set_preferences({
-			sign_icons = {
-				error = "✘",
-				warn = "▲",
-				hint = "⚑",
-				info = "»",
-			},
-		})
+		lsp.ui({
+      float_border = 'rounded',
+      sign_text = {
+        error = '✘',
+        warn = '▲',
+        hint = '⚑',
+        info = '»',
+      },
+    })
 
 		-- Configure Servers
 		lsp.setup_servers({
