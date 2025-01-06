@@ -27,6 +27,7 @@
           lazygit
           unzip
           lua
+          lua52Packages.lua-utils-nvim
 
           nil
           statix
@@ -43,7 +44,6 @@
           libclang
 
           rust-bin.stable.latest.default
-          rust-analyzer
         ];
 
         nvim =

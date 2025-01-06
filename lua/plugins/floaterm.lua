@@ -6,7 +6,7 @@ return {
 		keymap.set(
 			"n",
 			"<leader>lt",
-			"<CMD>FloatermNew --autoclose=2 --width=0.9 --height=0.9 fish<CR>",
+			"<CMD>FloatermNew --autoclose=2 --width=0.9 --height=0.9 nu<CR>",
 			{ desc = "Open terminal" }
 		)
 		keymap.set(
