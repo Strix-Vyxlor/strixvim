@@ -36,6 +36,7 @@
           alejandra
 
           vscode-langservers-extracted
+          typescript-language-server
           yaml-language-server
           lua-language-server
           stylua

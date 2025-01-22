@@ -53,14 +53,14 @@ return {
 		-- lsp.preset("recommended")
 		-- lsp.nvim_workspace()
 		lsp.ui({
-      float_border = 'rounded',
-      sign_text = {
-        error = '✘',
-        warn = '▲',
-        hint = '⚑',
-        info = '»',
-      },
-    })
+			float_border = "rounded",
+			sign_text = {
+				error = "✘",
+				warn = "▲",
+				hint = "⚑",
+				info = "»",
+			},
+		})
 
 		-- Configure Servers
 		lsp.setup_servers({
@@ -71,6 +71,7 @@ return {
 			"jsonls",
 			"pyright",
 			"clangd",
+			"ts_ls",
 		})
 
 		require("lspconfig").nil_ls.setup({
