@@ -27,7 +27,6 @@
           lazygit
           unzip
           lua
-          lua51Packages.lua-utils-nvim
 
           nil
           statix

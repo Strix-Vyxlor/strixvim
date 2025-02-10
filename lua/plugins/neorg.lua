@@ -2,6 +2,9 @@ return {
 	"nvim-neorg/neorg",
 	lazy = false,
 	version = "*",
+	dependencies = {
+		{ "nvim-neorg/lua-utils.nvim" },
+	},
 	config = function()
 		require("neorg").setup({
 			load = {
