@@ -50,8 +50,6 @@ return {
 
 		require("neodev").setup({})
 
-		-- lsp.preset("recommended")
-		-- lsp.nvim_workspace()
 		lsp.ui({
 			float_border = "rounded",
 			sign_text = {
