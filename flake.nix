@@ -40,9 +40,6 @@
           lua-language-server
           stylua
           pyright
-
-          libclang
-
           rust-bin.stable.latest.default
         ];
 
