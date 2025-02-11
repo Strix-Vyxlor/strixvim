@@ -27,7 +27,7 @@
           lazygit
           unzip
           lua
-
+          mdfmt
           nil
           statix
           deadnix
@@ -40,6 +40,7 @@
           lua-language-server
           stylua
           pyright
+          mdformat
           rust-bin.stable.latest.default
         ];
 
