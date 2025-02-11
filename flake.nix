@@ -27,7 +27,7 @@
           lazygit
           unzip
           lua
-          mdfmt
+
           nil
           statix
           deadnix
