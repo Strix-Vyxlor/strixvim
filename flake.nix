@@ -51,10 +51,11 @@
                 set runtimepath^=${./.}
                 source ${./.}/init.lua
               '';
-              extraLuaPackages = with pkgs.lua51Packages; [
-                pathlib-nvim
-                lua-utils-nvim
-              ];
+              extraLuaPackages = ps:
+                with ps; [
+                  pathlib-nvim
+                  lua-utils-nvim
+                ];
             }
             // {
               wrapperArgs = [
