@@ -2,7 +2,7 @@
   description = "Strix Vyxlor neovim config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
@@ -26,7 +26,8 @@
           fzf
           lazygit
           unzip
-          lua
+          (lua.withPackages
+            (ps: with ps; [pathlib-nvim lua-utils-nvim]))
 
           nil
           statix
