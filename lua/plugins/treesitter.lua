@@ -4,7 +4,6 @@ return {
 	build = ":TSUpdate",
 	dependencies = {
 		"windwp/nvim-ts-autotag",
-		"IndianBoy42/tree-sitter-just",
 	},
 	config = function()
 		-- import nvim-treesitter plugin
@@ -35,7 +34,5 @@ return {
 				"nix",
 			},
 		})
-
-		require("tree-sitter-just").setup({})
 	end,
 }
