@@ -42,7 +42,6 @@
           stylua
           pyright
           mdformat
-          just
           rust-bin.stable.latest.default
         ];
 
