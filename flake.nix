@@ -19,6 +19,30 @@
           overlays = [(import inputs.rust-overlay)];
         };
 
+        lunajson = pkgs.buildLuarocksPackage {
+          pname = "lunajson";
+          version = "1.2.3-1";
+          knownRockspec =
+            (pkgs.fetchurl {
+              url = "mirror://luarocks/lunajson-1.2.3-1.rockspec";
+              sha256 = "1zqjyd90skjhmbmrisxrlsx1wzckrxg66ha3yf2dp71p6hnblfbp";
+            }).outPath;
+          src = pkgs.fetchFromGitHub {
+            owner = "grafi-tt";
+            repo = "lunajson";
+            rev = "1.2.3";
+            hash = "sha256-LZipetkhtScHhI78OFLVkEjpQyvdkbMM0Y2TGFQ7dvg=";
+          };
+
+          disabled = pkgs.luaOlder "5.1";
+
+          meta = {
+            homepage = "https://github.com/grafi-tt/lunajson";
+            description = "A strict and fast JSON parser/decoder/encoder written in pure Lua";
+            license.fullName = "MIT/X11";
+          };
+        };
+
         runDeps = with pkgs; [
           gcc
           gnumake
@@ -27,7 +51,7 @@
           lazygit
           unzip
           (lua.withPackages
-            (ps: with ps; [pathlib-nvim lua-utils-nvim]))
+            (ps: with ps; [pathlib-nvim lua-utils-nvim lunajson]))
 
           nil
           statix

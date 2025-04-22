@@ -3,7 +3,56 @@ return {
 	name = "base16",
 	priority = 1000,
 	config = function()
-		require("base16-colorscheme").with_config({
+		local colorscheme = require("base16-colorscheme")
+		local json = require("lunajson")
+
+		local theme = {}
+		local file, err = io.open("~/.config/stylix/palette.json", "r")
+		if not file then
+			theme = {
+				base00 = "#1e1e2e",
+				base01 = "#181825",
+				base02 = "#313244",
+				base03 = "#45475a",
+				base04 = "#585b70",
+				base05 = "#cdd6f4",
+				base06 = "#f5e0dc",
+				base07 = "#b4befe",
+				base08 = "#f38ba8",
+				base09 = "#fab387",
+				base0A = "#f9e2af",
+				base0B = "#a6e3a1",
+				base0C = "#94e2d5",
+				base0D = "#89b4fa",
+				base0E = "#cba6f7",
+				base0F = "#f2cdcd",
+			}
+			return
+		else
+			local content = file:read("*a")
+			local data = json.decode(content)
+
+			theme = {
+				base00 = "#" .. data.base00,
+				base01 = "#" .. data.base01,
+				base02 = "#" .. data.base02,
+				base03 = "#" .. data.base03,
+				base04 = "#" .. data.base04,
+				base05 = "#" .. data.base05,
+				base06 = "#" .. data.base06,
+				base07 = "#" .. data.base07,
+				base08 = "#" .. data.base08,
+				base09 = "#" .. data.base09,
+				base0A = "#" .. data.base0A,
+				base0B = "#" .. data.base0B,
+				base0C = "#" .. data.base0C,
+				base0D = "#" .. data.base0D,
+				base0E = "#" .. data.base0E,
+				base0F = "#" .. data.base0F,
+			}
+		end
+
+		colorscheme.with_config({
 			telescope = true,
 			indentblankline = true,
 			notify = true,
@@ -13,23 +62,6 @@ return {
 			dapui = true,
 		})
 
-		require("base16-colorscheme").setup({
-			base00 = "#271815",
-			base01 = "#1e100d",
-			base02 = "#5a0e09",
-			base03 = "#473532",
-			base04 = "#bdaba8",
-			base05 = "#ffedea",
-			base06 = "#e0bfba",
-			base07 = "#bf5f00",
-			base08 = "#b51e13",
-			base09 = "#cc4a00",
-			base0A = "#f0af1f",
-			base0B = "#f8c947",
-			base0C = "#c1b53d",
-			base0D = "#fb852c",
-			base0E = "#731a16",
-			base0F = "#643130",
-		})
+		colorscheme.setup(theme)
 	end,
 }
