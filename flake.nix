@@ -19,7 +19,9 @@
           overlays = [(import inputs.rust-overlay)];
         };
 
-        lunajson = pkgs.buildLuarocksPackage {
+        nvimLua = pkgs.neovim-unwrapped.lua;
+
+        lunajson = nvimLua.pkgs.buildLuarocksPackage {
           pname = "lunajson";
           version = "1.2.3-1";
           knownRockspec =
@@ -34,14 +36,14 @@
             hash = "sha256-LZipetkhtScHhI78OFLVkEjpQyvdkbMM0Y2TGFQ7dvg=";
           };
 
-          disabled = pkgs.luaOlder "5.1";
-
           meta = {
             homepage = "https://github.com/grafi-tt/lunajson";
             description = "A strict and fast JSON parser/decoder/encoder written in pure Lua";
             license.fullName = "MIT/X11";
           };
         };
+
+        luaEnv = nvimLua.withPackages (ps: with ps; [pathlib-nvim lua-utils-nvim lunajson]);
 
         runDeps = with pkgs; [
           gcc
@@ -50,8 +52,7 @@
           fzf
           lazygit
           unzip
-          (lua.withPackages
-            (ps: with ps; [pathlib-nvim lua-utils-nvim lunajson]))
+          luaEnv
 
           nil
           statix
@@ -80,6 +81,7 @@
                 with ps; [
                   pathlib-nvim
                   lua-utils-nvim
+                  lunajson
                 ];
             }
             // {
@@ -88,6 +90,14 @@
                 "PATH"
                 ":"
                 "${lib.makeBinPath runDeps}"
+                "--prefix"
+                "LUA_PATH"
+                ";"
+                (nvimLua.pkgs.luaLib.genLuaPathAbsStr luaEnv)
+                "--prefix"
+                "LUA_CPATH"
+                ";"
+                (nvimLua.pkgs.luaLib.genLuaCPathAbsStr luaEnv)
               ];
             });
       in {

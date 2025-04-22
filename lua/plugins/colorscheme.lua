@@ -7,7 +7,9 @@ return {
 		local json = require("lunajson")
 
 		local theme = {}
-		local file, err = io.open("~/.config/stylix/palette.json", "r")
+
+		local config_dir = os.getenv("XDG_CONFIG_HOME")
+		local file = io.open(config_dir .. "/stylix/palette.json", "r")
 		if not file then
 			theme = {
 				base00 = "#1e1e2e",
@@ -27,7 +29,6 @@ return {
 				base0E = "#cba6f7",
 				base0F = "#f2cdcd",
 			}
-			return
 		else
 			local content = file:read("*a")
 			local data = json.decode(content)
