@@ -31,6 +31,7 @@ return {
 			}
 		else
 			local content = file:read("*a")
+			io.close(file)
 			local data = json.decode(content)
 
 			theme = {
