@@ -10,7 +10,7 @@ return {
     }
 
     local config_dir = os.getenv("XDG_CONFIG_HOME")
-    local file = io.open(config_dir .. "/strix_vyxlor/env.json", "r")
+    local file = io.open(config_dir .. "/nvim/env.json", "r")
     if file then
       local content = file:read("*a")
       io.close(file)
