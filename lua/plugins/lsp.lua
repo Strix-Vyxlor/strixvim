@@ -193,8 +193,7 @@ return {
 			end,
 			init_options = {
 				cache = {
-					directory = vim.env.XDG_CACHE_HOME .. "/ccls/",
-					-- or vim.fs.normalize "~/.cache/ccls" -- if on nvim 0.8 or higher
+					directory = vim.fs.normalize "~/.cache/ccls",
 				},
 			},
 			--on_attach = require("my.attach").func,
