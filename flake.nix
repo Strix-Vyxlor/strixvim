@@ -16,7 +16,10 @@
         lib = inputs.nixpkgs.lib;
         pkgs = import inputs.nixpkgs {
           system = system;
-          overlays = [(import inputs.rust-overlay)];
+          overlays = [
+            (import inputs.rust-overlay) 
+            self.overlays.neovim
+          ];
         };
 
         nvimLua = pkgs.neovim-unwrapped.lua;
@@ -101,11 +104,16 @@
               ];
             });
       in {
-        overlays = {
+        homeManagerModules = rec {
+          strixvim = ./module;
+          default = strixvim;
+        };
+
+        overlays = rec {
           neovim = _: _prev: {
             neovim = nvim;
           };
-          default = self.overlays.neovim;
+          default = neovim;
         };
 
         packages = rec {

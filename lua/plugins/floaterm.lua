@@ -6,7 +6,7 @@ return {
 
 		local settings = {
 			shell = "sh",
-			file_manager = "none",
+			fileManager = "none",
 		}
 
 		local config_dir = os.getenv("XDG_CONFIG_HOME")
@@ -26,7 +26,7 @@ return {
 			"<CMD>FloatermNew --autoclose=2 --width=0.9 --height=0.9 " .. settings.shell .. "<CR>",
 			{ desc = "Open terminal" }
 		)
-		if settings.file_manager ~= "none" then
+		if settings.fileManager ~= "none" then
 			keymap.set(
 				"n",
 				"<leader>lf",

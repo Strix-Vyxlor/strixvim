@@ -6,4 +6,38 @@
 }: let
   inherit (lib) mkOption types mkIf;
   cfg = config.strixvim;
-in {}
+in {
+  options.strixvim = {
+    enable = mkOption {
+      type = types.bool;
+      default = false;
+      description = ''
+        enable strixvim
+      '';
+    };
+    env = {
+      shell = mkOption {
+        type = types.str;
+        default = "sh";
+        description = ''
+          shell to use in floatterm
+        '';
+      };
+      fileManager = mkOption {
+        type = types.str;
+        default = "none";
+        description = ''
+          terminal file manager to use (can be any other app)
+        '';
+      };
+    };
+  };
+
+  config = mkIf cfg.enable {
+    home.packages = [pkgs.neovim];
+
+    home.file.".config/nvim/env.json".text = builtins.toJson {
+      inherit (cfg.env) shell fileManager;
+    };
+  };
+}
