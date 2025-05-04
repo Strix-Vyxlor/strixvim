@@ -7,7 +7,6 @@
   fzf,
   lazygit,
   unzip,
-  luaEnv,
   nil,
   statix,
   deadnix,
