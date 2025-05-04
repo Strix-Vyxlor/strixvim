@@ -34,7 +34,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = [pkgs.neovim];
+    home.packages = [pkgs.strixvim];
 
     home.file.".config/nvim/env.json".text = builtins.toJSON {
       inherit (cfg.env) shell fileManager;
