@@ -7,8 +7,8 @@
   inherit (lib) mkOption types mkIf;
   cfg = config.strixvim;
 in {
-  nixpkgs.overlays = [
-    (import ./overlay.nix)
+  imports = [
+    ./overlay.nix
   ];
 
   options.strixvim = {
