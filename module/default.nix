@@ -1,4 +1,4 @@
-{
+{inputs}: {
   pkgs,
   lib,
   config,
@@ -8,7 +8,7 @@
   cfg = config.strixvim;
 in {
   imports = [
-    ./overlay.nix
+    (import ./overlay.nix {inherit inputs;})
   ];
 
   options.strixvim = {

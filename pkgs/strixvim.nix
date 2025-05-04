@@ -25,7 +25,6 @@
   vimPlugins,
   callPackage,
 }: let
-  
   lua = neovim-unwrapped.lua;
   lunajson = callPackage ./lunajson.nix {
     inherit (lua.pkgs) buildLuarocksPackage luaOlder;
@@ -59,48 +58,51 @@
   ];
 
   neovimConfig = neovimUtils.makeNeovimConfig {
-      myVimPackage = "strixvim";
-      customRC = ''
-        set runtimepath^=${./. + "/.."}
-        source ${./. + "/.."}/init.lua
-      '';
-      extraLuaPackages = ps:
-        with ps; [
-          pathlib-nvim
-          lua-utils-nvim
-          lunajson
-        ];
-
-      plugins = with vimPlugins; [
-        nvim-treesitter.withAllGrammars
+    myVimPackage = "strixvim";
+    customRC = ''
+      set runtimepath^=${./. + "/.."}
+      source ${./. + "/.."}/init.lua
+    '';
+    extraLuaPackages = ps:
+      with ps; [
+        pathlib-nvim
+        lua-utils-nvim
+        lunajson
       ];
+
+    plugins = with vimPlugins; [
+      nvim-treesitter.withAllGrammars
+    ];
   };
 
   neovim-wrapped =
     wrapNeovimUnstable neovim-unwrapped
-    (neovimConfig // {
-      wrapperArgs = [
-        "--prefix"
-        "PATH"
-        ":"
-        "${lib.makeBinPath runDeps}"
-        "--prefix"
-        "LUA_PATH"
-        ";"
-        (lua.pkgs.luaLib.genLuaPathAbsStr luaEnv)
-        "--prefix"
-        "LUA_CPATH"
-        ";"
-        (lua.pkgs.luaLib.genLuaCPathAbsStr luaEnv)
-        "--set"
-        "NVIM_APPNAME"
-        "svim"
-      ];
-    });
+    (neovimConfig
+      // {
+        wrapperArgs = [
+          "--prefix"
+          "PATH"
+          ":"
+          "${lib.makeBinPath runDeps}"
+          "--prefix"
+          "LUA_PATH"
+          ";"
+          (lua.pkgs.luaLib.genLuaPathAbsStr luaEnv)
+          "--prefix"
+          "LUA_CPATH"
+          ";"
+          (lua.pkgs.luaLib.genLuaCPathAbsStr luaEnv)
+          "--set"
+          "NVIM_APPNAME"
+          "svim"
+        ];
+      });
 in
   neovim-wrapped.overrideAttrs (oa: {
-    buildPhase = oa.buildPhase + ''
-          mv $out/bin/nvim $out/bin/svim
-        '';
+    buildPhase =
+      oa.buildPhase
+      + ''
+        mv $out/bin/nvim $out/bin/svim
+      '';
     meta.mainProgram = "svim";
   })
