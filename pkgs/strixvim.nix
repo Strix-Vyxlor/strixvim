@@ -1,5 +1,4 @@
 {
-  stdenv,
   lib,
   gcc,
   gnumake,
@@ -22,6 +21,7 @@
   rust-bin,
   wrapNeovimUnstable,
   neovimUtils,
+  vimPlugins,
 }: neovim-unwrapped: let
   lua = neovim-unwrapped.lua;
 
@@ -55,32 +55,68 @@
   nvim =
     wrapNeovimUnstable neovim-unwrapped
     (neovimUtils.makeNeovimConfig {
-        customRC = ''
-          set runtimepath^=${./.}
-          source ${./.}/init.lua
-        '';
-        extraLuaPackages = ps:
-          with ps; [
-            pathlib-nvim
-            lua-utils-nvim
-            lunajson
-          ];
-      }
-      // {
-        wrapperArgs = [
-          "--prefix"
-          "PATH"
-          ":"
-          "${lib.makeBinPath runDeps}"
-          "--prefix"
-          "LUA_PATH"
-          ";"
-          (lua.pkgs.luaLib.genLuaPathAbsStr luaEnv)
-          "--prefix"
-          "LUA_CPATH"
-          ";"
-          (lua.pkgs.luaLib.genLuaCPathAbsStr luaEnv)
+      myVimPackage = "strixvim";
+      customRC = ''
+        set runtimepath^=${./.}
+        source ${./.}/init.lua
+      '';
+      extraLuaPackages = ps:
+        with ps; [
+          pathlib-nvim
+          lua-utils-nvim
+          lunajson
         ];
-      });
+
+      plugins = with vimPlugins; [
+        nvim-treesitter.withAllGrammars
+      ];
+
+      wrapperArgs = [
+        "--prefix"
+        "PATH"
+        ":"
+        "${lib.makeBinPath runDeps}"
+        "--prefix"
+        "LUA_PATH"
+        ";"
+        (lua.pkgs.luaLib.genLuaPathAbsStr luaEnv)
+        "--prefix"
+        "LUA_CPATH"
+        ";"
+        (lua.pkgs.luaLib.genLuaCPathAbsStr luaEnv)
+      ];
+    });
 in
-  nvim
+  wrapNeovimUnstable neovim-unwrapped
+  (neovimUtils.makeNeovimConfig {
+    myVimPackage = "strixvim";
+    customRC = ''
+      set runtimepath^=${./.}
+      source ${./.}/init.lua
+    '';
+    extraLuaPackages = ps:
+      with ps; [
+        pathlib-nvim
+        lua-utils-nvim
+        lunajson
+      ];
+
+    plugins = with vimPlugins; [
+      nvim-treesitter.withAllGrammars
+    ];
+
+    wrapperArgs = [
+      "--prefix"
+      "PATH"
+      ":"
+      "${lib.makeBinPath runDeps}"
+      "--prefix"
+      "LUA_PATH"
+      ";"
+      (lua.pkgs.luaLib.genLuaPathAbsStr luaEnv)
+      "--prefix"
+      "LUA_CPATH"
+      ";"
+      (lua.pkgs.luaLib.genLuaCPathAbsStr luaEnv)
+    ];
+  })
