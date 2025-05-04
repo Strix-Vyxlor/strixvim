@@ -36,7 +36,7 @@ in {
   config = mkIf cfg.enable {
     home.packages = [pkgs.neovim];
 
-    home.file.".config/nvim/env.json".text = builtins.toJson {
+    home.file.".config/nvim/env.json".text = builtins.toJSON {
       inherit (cfg.env) shell fileManager;
     };
   };
