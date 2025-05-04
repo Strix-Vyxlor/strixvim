@@ -1,5 +1,5 @@
 {inputs, ...}: {
   nixpkgs.overlays = [
-    (import ./overlay.nix {inherit inputs;})
+    (import ../overlay.nix {inherit inputs;})
   ];
 }
