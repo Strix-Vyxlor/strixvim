@@ -21,9 +21,6 @@
   pyright,
   mdformat,
   rust-bin,
-  lunajson,
-  pathlib-nvim,
-  lua-utils-nvim,
   wrapNeovimUnstable,
   neovimUtils,
 }: neovim-unwrapped: let
