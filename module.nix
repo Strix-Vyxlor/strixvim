@@ -7,6 +7,10 @@
   inherit (lib) mkOption types mkIf;
   cfg = config.strixvim;
 in {
+  nixpkgs.overlays = [
+    (import ./overlay.nix)
+  ];
+
   options.strixvim = {
     enable = mkOption {
       type = types.bool;
