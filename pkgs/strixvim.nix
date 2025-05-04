@@ -19,11 +19,17 @@
   pyright,
   mdformat,
   rust-bin,
+  neovim-unwrapped,
   wrapNeovimUnstable,
   neovimUtils,
   vimPlugins,
-}: neovim-unwrapped: let
+  callPackage,
+}: let
+  
   lua = neovim-unwrapped.lua;
+  lunajson = callPackage ./lunajson.nix {
+    inherit (lua.pkgs) buildLuarocksPackage luaOlder;
+  };
 
   luaEnv = lua.withPackages (ps: with ps; [pathlib-nvim lua-utils-nvim lunajson]);
 
@@ -55,8 +61,8 @@
   neovimConfig = neovimUtils.makeNeovimConfig {
       myVimPackage = "strixvim";
       customRC = ''
-        set runtimepath^=${./.}
-        source ${./.}/init.lua
+        set runtimepath^=${./. + "/.."}
+        source ${./. + "/.."}/init.lua
       '';
       extraLuaPackages = ps:
         with ps; [
@@ -86,6 +92,9 @@
         "LUA_CPATH"
         ";"
         (lua.pkgs.luaLib.genLuaCPathAbsStr luaEnv)
+        "--set"
+        "NVIM_APPNAME"
+        "svim"
       ];
     });
 in
