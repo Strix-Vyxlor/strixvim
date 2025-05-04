@@ -52,9 +52,7 @@
     rust-bin.stable.latest.default
   ];
 
-  nvim =
-    wrapNeovimUnstable neovim-unwrapped
-    (neovimUtils.makeNeovimConfig {
+  neovimConfig = neovimUtils.makeNeovimConfig {
       myVimPackage = "strixvim";
       customRC = ''
         set runtimepath^=${./.}
@@ -70,7 +68,11 @@
       plugins = with vimPlugins; [
         nvim-treesitter.withAllGrammars
       ];
+  };
 
+  neovim-wrapped =
+    wrapNeovimUnstable neovim-unwrapped
+    (neovimConfig // {
       wrapperArgs = [
         "--prefix"
         "PATH"
@@ -87,36 +89,9 @@
       ];
     });
 in
-  wrapNeovimUnstable neovim-unwrapped
-  (neovimUtils.makeNeovimConfig {
-    myVimPackage = "strixvim";
-    customRC = ''
-      set runtimepath^=${./.}
-      source ${./.}/init.lua
-    '';
-    extraLuaPackages = ps:
-      with ps; [
-        pathlib-nvim
-        lua-utils-nvim
-        lunajson
-      ];
-
-    plugins = with vimPlugins; [
-      nvim-treesitter.withAllGrammars
-    ];
-
-    wrapperArgs = [
-      "--prefix"
-      "PATH"
-      ":"
-      "${lib.makeBinPath runDeps}"
-      "--prefix"
-      "LUA_PATH"
-      ";"
-      (lua.pkgs.luaLib.genLuaPathAbsStr luaEnv)
-      "--prefix"
-      "LUA_CPATH"
-      ";"
-      (lua.pkgs.luaLib.genLuaCPathAbsStr luaEnv)
-    ];
+  neovim-wrapped.overrideAttrs (oa: {
+    buildPhase = oa.buildPhase + ''
+          mv $out/bin/nvim $out/bin/svim
+        '';
+    meta.mainProgram = "svim";
   })
