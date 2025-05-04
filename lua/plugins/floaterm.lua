@@ -10,10 +10,10 @@ return {
 		}
 
 		local config_dir = os.getenv("XDG_CONFIG_HOME")
-    if config_dir == nil then
-      config_dir = "~/.config"
-    end
-		local file = io.open(config_dir .. "/nvim/env.json", "r")
+		if config_dir == nil then
+			config_dir = "~/.config"
+		end
+		local file = io.open(config_dir .. "/svim/env.json", "r")
 		if file then
 			local content = file:read("*a")
 			io.close(file)
