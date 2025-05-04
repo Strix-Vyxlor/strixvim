@@ -13,7 +13,7 @@
     inherit (inputs.nixpkgs) lib;
   in {
     homeManagerModules = rec {
-      strixvim = ./module.nix;
+      strixvim = ./module;
       default = strixvim;
     };
 
