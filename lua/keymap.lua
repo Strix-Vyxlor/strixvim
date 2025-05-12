@@ -15,6 +15,10 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go te previous tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
 
+keymap.set("n", "<M-Left>", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
+keymap.set("n", "<M-Right>", "<cmd>tabn<CR>", { desc = "Go to next tab" })
+keymap.set("n", "<M-Up>", "<cmd>tabnew<CR>", { desc = "Open new tab" })
+
 -- lazy management --
 keymap.set("n", "<leader>ui", "<cmd>Lazy install<CR>", { desc = "Install new plugins" })
 keymap.set("n", "<leader>uu", "<cmd>Lazy update<CR>", { desc = "Update plugins" })

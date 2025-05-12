@@ -7,7 +7,7 @@ return {
 		local theme_colors = require("base16-colorscheme").colors
 
 		local colors = {
-			peach = theme_colors.base0D,
+			blue = theme_colors.base0D,
 			yellow = theme_colors.base0B,
 			violet = theme_colors.base0E,
 			teal = theme_colors.base0C,
@@ -19,7 +19,7 @@ return {
 
 		local my_lualine_theme = {
 			normal = {
-				a = { bg = colors.peach, fg = colors.bg, gui = "bold" },
+				a = { bg = colors.blue, fg = colors.bg, gui = "bold" },
 				b = { bg = colors.bg, fg = colors.fg },
 				c = { bg = colors.bg, fg = colors.fg },
 			},
