@@ -30,7 +30,7 @@ return {
 			keymap.set(
 				"n",
 				"<leader>lf",
-				"<CMD>FloatermNew --autoclose=2 --width=0.9 --height=0.9 " .. settings.file_manager .. "<CR>",
+				"<CMD>FloatermNew --autoclose=2 --width=0.9 --height=0.9 " .. settings.fileManager .. "<CR>",
 				{ desc = "Open file manager" }
 			)
 		end
