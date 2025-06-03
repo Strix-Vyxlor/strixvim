@@ -5,18 +5,33 @@ return {
 	opts = {
 		-- add any opts here
 		-- for example
-		provider = "lmstudio",
+		vertex = {
+			hide_in_model_selector = true,
+		},
+		vertex_claude = {
+			hide_in_model_selector = true,
+		},
+
+		provider = "ollama",
 		providers = {
-			lmstudio = {
-				__inherited_from = "openai",
-				endpoint = "http://100.92.219.82:3300/v1",
-				model = "claude-3.7-sonnet-reasoning-gemma3-12b", -- your desired model (or use gpt-4o, etc.)
-				-- extra_request_body = {
-				-- 	timeout = 50000, -- Timeout in milliseconds, increase this for reasoning models
-				-- 	temperature = 0.75,
-				-- 	max_completion_tokens = 16384, -- Increase this to include reasoning tokens (for reasoning models)
-				-- 	--reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
-				-- },
+			ollama = {
+				endpoint = "http://localhost:11434",
+				model = "mistral", -- your desired model (or use gpt-4o, etc.)
+				temperature = 0.5,
+			},
+		},
+		vendors = {
+			ollama_mistral = {
+				__inherited_from = "ollama",
+				endpoint = "http://localhost:11434",
+				model = "mistral",
+				temperature = 0.5,
+			},
+			ollama_deepseek = {
+				__inherited_from = "ollama",
+				endpoint = "http://localhost:11434",
+				model = "deepseek-coder:6.7b",
+				temperature = 0.5,
 			},
 		},
 	},
