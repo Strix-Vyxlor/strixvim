@@ -12,12 +12,14 @@ return {
 				endpoint = "http://localhost:11434",
 				model = "mistral",
 				temperature = 0.5,
+				hide_in_model_selector = false,
 			},
 			ollama_deepseek = {
 				__inherited_from = "ollama",
 				endpoint = "http://localhost:11434",
 				model = "deepseek-coder:6.7b",
 				temperature = 0.5,
+				hide_in_model_selector = false,
 			},
 			vertex = {
 				hide_in_model_selector = true,
