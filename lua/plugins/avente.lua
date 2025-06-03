@@ -9,7 +9,7 @@ return {
 		providers = {
 			lmstudio = {
 				__inherited_from = "openai",
-				endpoint = "http://strix-desktop:3300/v1",
+				endpoint = "http://100.92.219.82:3300/v1",
 				model = "claude-3.7-sonnet-reasoning-gemma3-12b", -- your desired model (or use gpt-4o, etc.)
 				-- extra_request_body = {
 				-- 	timeout = 50000, -- Timeout in milliseconds, increase this for reasoning models
