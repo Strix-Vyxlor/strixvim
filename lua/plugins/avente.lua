@@ -5,9 +5,8 @@ return {
 	opts = {
 		-- add any opts here
 		-- for example
-		provider = "desktop",
 		providers = {
-			strix_desktop = {
+			desktop = {
 				endpoint = "http://strix-desktop:3300/v1",
 				model = "claude-3.7-sonnet-reasoning-gemma3-12b", -- your desired model (or use gpt-4o, etc.)
 				extra_request_body = {
