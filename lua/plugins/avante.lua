@@ -2,35 +2,6 @@ return {
 	"yetone/avante.nvim",
 	event = "VeryLazy",
 	version = false, -- Never set this value to "*"! Never!
-	opts = {
-		-- add any opts here
-		-- for example
-		provider = "ollama_mistral",
-		providers = {
-			ollama_mistral = {
-				__inherited_from = "ollama",
-				endpoint = "http://localhost:11434",
-				model = "mistral:latest",
-				temperature = 0.5,
-				hide_in_model_selector = false,
-				timeout = 30000,
-			},
-			ollama_deepseek = {
-				__inherited_from = "ollama",
-				endpoint = "http://localhost:11434",
-				model = "deepseek-coder:6.7b",
-				temperature = 0.5,
-				hide_in_model_selector = false,
-				timeout = 30000,
-			},
-			vertex = {
-				hide_in_model_selector = true,
-			},
-			vertex_claude = {
-				hide_in_model_selector = true,
-			},
-		},
-	},
 	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
 	build = "make BUILD_FROM_SOURCE=true",
 	-- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
@@ -72,4 +43,34 @@ return {
 			ft = { "markdown", "Avante" },
 		},
 	},
+	config = function()
+		require("avante_lib").load()
+		require("avante").setup({
+			provider = "ollama_mistral",
+			providers = {
+				ollama_mistral = {
+					__inherited_from = "ollama",
+					endpoint = "http://localhost:11434",
+					model = "mistral:latest",
+					temperature = 0.5,
+					hide_in_model_selector = false,
+					timeout = 30000,
+				},
+				ollama_deepseek = {
+					__inherited_from = "ollama",
+					endpoint = "http://localhost:11434",
+					model = "deepseek-coder:6.7b",
+					temperature = 0.5,
+					hide_in_model_selector = false,
+					timeout = 30000,
+				},
+				vertex = {
+					hide_in_model_selector = true,
+				},
+				vertex_claude = {
+					hide_in_model_selector = true,
+				},
+			},
+		})
+	end,
 }
