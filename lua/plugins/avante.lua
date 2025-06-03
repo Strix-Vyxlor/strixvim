@@ -5,22 +5,8 @@ return {
 	opts = {
 		-- add any opts here
 		-- for example
-		vertex = {
-			hide_in_model_selector = true,
-		},
-		vertex_claude = {
-			hide_in_model_selector = true,
-		},
-
-		provider = "ollama",
+		provider = "ollama_mistral",
 		providers = {
-			ollama = {
-				endpoint = "http://localhost:11434",
-				model = "mistral", -- your desired model (or use gpt-4o, etc.)
-				temperature = 0.5,
-			},
-		},
-		vendors = {
 			ollama_mistral = {
 				__inherited_from = "ollama",
 				endpoint = "http://localhost:11434",
@@ -32,6 +18,12 @@ return {
 				endpoint = "http://localhost:11434",
 				model = "deepseek-coder:6.7b",
 				temperature = 0.5,
+			},
+			vertex = {
+				hide_in_model_selector = true,
+			},
+			vertex_claude = {
+				hide_in_model_selector = true,
 			},
 		},
 	},
