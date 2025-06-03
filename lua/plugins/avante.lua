@@ -13,6 +13,7 @@ return {
 				model = "mistral:latest",
 				temperature = 0.5,
 				hide_in_model_selector = false,
+				timeout = 30000,
 			},
 			ollama_deepseek = {
 				__inherited_from = "ollama",
@@ -20,6 +21,7 @@ return {
 				model = "deepseek-coder:6.7b",
 				temperature = 0.5,
 				hide_in_model_selector = false,
+				timeout = 30000,
 			},
 			vertex = {
 				hide_in_model_selector = true,
@@ -30,7 +32,7 @@ return {
 		},
 	},
 	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-	build = "make",
+	build = "make BUILD_FROM_SOURCE=true",
 	-- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
