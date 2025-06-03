@@ -10,7 +10,7 @@ return {
 			ollama_mistral = {
 				__inherited_from = "ollama",
 				endpoint = "http://localhost:11434",
-				model = "mistral",
+				model = "mistral:latest",
 				temperature = 0.5,
 				hide_in_model_selector = false,
 			},
