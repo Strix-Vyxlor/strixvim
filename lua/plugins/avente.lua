@@ -5,6 +5,7 @@ return {
 	opts = {
 		-- add any opts here
 		-- for example
+		provider = "openai",
 		providers = {
 			desktop = {
 				endpoint = "http://strix-desktop:3300/v1",
