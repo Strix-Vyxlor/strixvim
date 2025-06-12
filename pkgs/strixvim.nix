@@ -11,13 +11,14 @@
   deadnix,
   manix,
   alejandra,
+  jdt-language-server,
+  google-java-format,
   vscode-langservers-extracted,
   typescript-language-server,
   yaml-language-server,
   lua-language-server,
   stylua,
   pyright,
-  mdformat,
   rust-bin,
   neovim-unwrapped,
   wrapNeovimUnstable,
@@ -46,6 +47,8 @@
     deadnix
     manix
     alejandra
+    jdt-language-server
+    google-java-format
 
     vscode-langservers-extracted
     typescript-language-server
@@ -53,7 +56,6 @@
     lua-language-server
     stylua
     pyright
-    mdformat
     rust-bin.stable.latest.default
   ];
 

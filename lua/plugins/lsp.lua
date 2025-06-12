@@ -31,24 +31,33 @@ return {
 			"stevearc/conform.nvim",
 		},
 
-		-- c, cpp
-		--{ "ranjithshegde/ccls.nvim" },
-
 		-- Rust
 		{ "simrat39/rust-tools.nvim" },
 		{
 			"saecki/crates.nvim",
-			tag = "v0.4.0",
+			tag = "stable",
 			dependencies = { "nvim-lua/plenary.nvim" },
 			config = function()
-				require("crates").setup()
+				require("crates").setup({
+					completion = {
+						cmp = {
+							enabled = true,
+						},
+					},
+				})
 			end,
 		},
+
+		-- Java
+		{ "nvim-java/nvim-java" },
 	},
 	config = function()
 		local lsp = require("lsp-zero")
 
 		require("neodev").setup({})
+		require("java").setup({
+			jdk = { auto_install = false },
+		})
 
 		lsp.ui({
 			float_border = "rounded",
@@ -70,6 +79,7 @@ return {
 			"pyright",
 			"clangd",
 			"ts_ls",
+			"jdtls",
 		})
 
 		require("lspconfig").nil_ls.setup({
@@ -133,6 +143,7 @@ return {
 				{ name = "buffer" }, -- text within current buffer
 				{ name = "path" }, -- file system paths
 				{ name = "neorg" },
+				{ name = "crates" },
 			}),
 			formatting = {
 				fields = { "kind", "abbr", "menu" },
@@ -158,7 +169,6 @@ return {
 				lua = { "stylua" },
 				nix = { "alejandra" },
 				rust = { "rustfmt" },
-				markdown = { "mdformat" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
@@ -183,22 +193,5 @@ return {
 				require("lint").try_lint()
 			end,
 		})
-
-		local util = require("lspconfig.util")
-		local server_config = {
-			filetypes = { "c", "cpp", "objc", "objcpp", "opencl" },
-			root_dir = function(fname)
-				return util.root_pattern("compile_commands.json", "compile_flags.txt", ".git")(fname)
-					or util.find_git_ancestor(fname)
-			end,
-			init_options = {
-				cache = {
-					directory = vim.fs.normalize "~/.cache/ccls",
-				},
-			},
-			--on_attach = require("my.attach").func,
-			--capabilities = my_caps_table_or_func
-		}
-		--require("ccls").setup({ lsp = { lspconfig = server_config } })
 	end,
 }
