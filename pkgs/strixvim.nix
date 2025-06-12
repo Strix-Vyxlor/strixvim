@@ -17,8 +17,12 @@
   typescript-language-server,
   yaml-language-server,
   lua-language-server,
+  kotlin-language-server,
   stylua,
+  black,
+  isort,
   pyright,
+  ktfmt,
   rust-bin,
   neovim-unwrapped,
   wrapNeovimUnstable,
@@ -49,6 +53,10 @@
     alejandra
     jdt-language-server
     google-java-format
+    kotlin-language-server
+    black
+    isort
+    ktfmt
 
     vscode-langservers-extracted
     typescript-language-server
@@ -56,7 +64,7 @@
     lua-language-server
     stylua
     pyright
-    rust-bin.stable.latest.default
+    rust-bin.nightly.latest.default
   ];
 
   neovimConfig = neovimUtils.makeNeovimConfig {
