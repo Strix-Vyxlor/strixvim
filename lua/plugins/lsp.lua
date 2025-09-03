@@ -18,6 +18,9 @@ return {
 		{ "lukas-reineke/lsp-format.nvim" },
 		{ "stevearc/conform.nvim" },
 
+		{ "onsails/lspkind.nvim" },
+		{ "nvim-tree/nvim-web-devicons" },
+
 		{
 			"saecki/crates.nvim",
 			event = { "BufRead Cargo.toml" },
@@ -107,10 +110,12 @@ return {
 				["<C-e>"] = { "cancel", "fallback" },
 				["<CR>"] = { "accept", "fallback" },
 			},
+			ghost_text = { enabled = true },
 			completion = {
 				documentation = { auto_show = true },
-				list = { selection = { preselect = true } },
+				list = { selection = { preselect = true, auto_insert = false } },
 				menu = {
+					auto_show = true,
 					draw = {
 						components = {
 							kind_icon = {
@@ -145,8 +150,20 @@ return {
 								end,
 							},
 						},
-						columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
 					},
+				},
+			},
+			cmdline = {
+				keymap = {
+					preset = "none",
+					["<Tab>"] = { "show", "select_next", "fallback" },
+					["<S-Tab>"] = { "select_prev", "fallback" },
+					["<C-q>"] = { "show_and_insert", "fallback" },
+					["<C-e>"] = { "cancel", "fallback" },
+					["<CR>"] = { "accept", "fallback" },
+				},
+				completion = {
+					ghost_text = { enabled = true },
 				},
 			},
 		})
