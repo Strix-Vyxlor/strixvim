@@ -110,10 +110,11 @@ return {
 				["<C-e>"] = { "cancel", "fallback" },
 				["<CR>"] = { "accept", "fallback" },
 			},
-			ghost_text = { enabled = true },
+			signature = { enabled = true },
 			completion = {
 				documentation = { auto_show = true },
 				list = { selection = { preselect = true, auto_insert = false } },
+				ghost_text = { enabled = true },
 				menu = {
 					auto_show = true,
 					draw = {
