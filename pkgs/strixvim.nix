@@ -18,6 +18,7 @@
   yaml-language-server,
   lua-language-server,
   kotlin-language-server,
+  vala-language-server,
   stylua,
   black,
   isort,
@@ -62,6 +63,7 @@
     typescript-language-server
     yaml-language-server
     lua-language-server
+    vala-language-server
     stylua
     pyright
     rust-bin.nightly.latest.default

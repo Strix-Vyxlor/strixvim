@@ -40,6 +40,7 @@ return {
 			jdtls = {},
 			gdscript = {},
 			gdshader_lsp = {},
+			vala_ls = {},
 			nil_ls = {
 				settings = {
 					["nil"] = {
