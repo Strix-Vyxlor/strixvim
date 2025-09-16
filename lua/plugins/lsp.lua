@@ -35,7 +35,14 @@ return {
 			yamlls = {},
 			jsonls = {},
 			pyright = {},
-			clangd = {},
+			--clangd = {},
+			ccls = {
+				init_options = {
+					cache = {
+						directory = ".ccls-cache",
+					},
+				},
+			},
 			ts_ls = {},
 			jdtls = {},
 			gdscript = {},
