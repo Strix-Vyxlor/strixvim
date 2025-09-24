@@ -93,7 +93,7 @@ return {
 		},
 	},
 	config = function(_, opts)
-		local lspconfig = require("lspconfig")
+		local lspconfig = vim.lsp.config
 		local blink = require("blink.cmp")
 		for server, config in pairs(opts.servers) do
 			-- passing config.capabilities to blink.cmp merges with the capabilities in your
