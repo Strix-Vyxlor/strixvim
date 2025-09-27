@@ -20,11 +20,11 @@ return {
 						},
 					},
 				},
-				["core.completion"] = {
-					config = {
-						engine = "nvim-cmp",
-					},
-				},
+				-- ["core.completion"] = {
+				-- 	config = {
+				-- 		engine = "nvim-cmp",
+				-- 	},
+				-- },
 				["core.export"] = {},
 			},
 		})
