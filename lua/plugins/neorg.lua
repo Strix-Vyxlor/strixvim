@@ -4,6 +4,7 @@ return {
 	version = "*",
 	config = function()
 		require("neorg").setup({
+			rocks = { enabled = false, hererocks = false },
 			load = {
 				["core.defaults"] = {},
 				["core.concealer"] = {

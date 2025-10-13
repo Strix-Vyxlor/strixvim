@@ -22,6 +22,7 @@
   black,
   isort,
   pyright,
+  python3,
   ktfmt,
   rust-bin,
   neovim-unwrapped,
@@ -35,7 +36,7 @@
     inherit (lua.pkgs) buildLuarocksPackage luaOlder;
   };
 
-  luaEnv = lua.withPackages (ps: with ps; [pathlib-nvim lua-utils-nvim lunajson]);
+  luaEnv = lua.withPackages (ps: with ps; [pathlib-nvim lua-utils-nvim lunajson neorg]);
 
   runDeps = [
     gcc
@@ -64,6 +65,7 @@
     lua-language-server
     stylua
     pyright
+    python3
     rust-bin.nightly.latest.default
   ];
 
