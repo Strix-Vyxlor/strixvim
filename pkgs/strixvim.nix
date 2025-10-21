@@ -36,7 +36,7 @@
     inherit (lua.pkgs) buildLuarocksPackage luaOlder;
   };
 
-  luaEnv = lua.withPackages (ps: with ps; [pathlib-nvim lua-utils-nvim lunajson neorg]);
+  luaEnv = lua.withPackages (ps: with ps; [pathlib-nvim lua-utils-nvim lunajson neorg luarocks]);
 
   runDeps = [
     gcc
@@ -80,6 +80,7 @@
         pathlib-nvim
         lua-utils-nvim
         lunajson
+        luarocks
       ];
 
     plugins = with vimPlugins; [
