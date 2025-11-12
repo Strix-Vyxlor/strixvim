@@ -19,7 +19,6 @@
         inherit system;
         overlays = [
           # Import the overlay, so that the final Neovim derivation(s) can be accessed via pkgs.<nvim-pkg>
-          (import inputs.rust-overlay)
           strixvim-overlay
         ];
       };

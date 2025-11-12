@@ -1,4 +1,5 @@
 {
+  stdenv,
   lib,
   gcc,
   gnumake,
@@ -66,7 +67,7 @@
     stylua
     pyright
     python3
-    rust-bin.nightly.latest.default
+    rust-bin.${stdenv.hostPlatform.system}.rust
   ];
 
   neovimConfig = neovimUtils.makeNeovimConfig {
