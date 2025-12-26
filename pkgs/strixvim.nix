@@ -67,7 +67,7 @@
     stylua
     pyright
     python3
-    rust-bin.${stdenv.hostPlatform.system}.rust
+    rust-bin.${stdenv.hostPlatform.system}.rust-nightly
   ];
 
   neovimConfig = neovimUtils.makeNeovimConfig {
