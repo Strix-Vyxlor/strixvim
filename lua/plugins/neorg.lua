@@ -1,7 +1,8 @@
 return {
 	"nvim-neorg/neorg",
 	lazy = false,
-	version = "*",
+	-- version = "*",
+	version = false, -- why the fuck false (apparently latest)
 	config = function()
 		require("neorg").setup({
 			load = {
@@ -32,6 +33,16 @@ return {
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 			pattern = { "*.norg" },
 			command = "set conceallevel=3",
+		})
+
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = { "norg", "neorg" },
+			callback = function()
+				if pcall(vim.treesitter.start) then
+					vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+					vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end
+			end,
 		})
 
 		local keymap = vim.keymap
