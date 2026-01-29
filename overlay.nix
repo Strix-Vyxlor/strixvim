@@ -1,5 +1,5 @@
 {inputs}: final: prev: let
-  pkgs-locked = inputs.nixpkgs.legacyPackages.${final.system};
+  pkgs-locked = inputs.nixpkgs.legacyPackages.${final.stdenv.hostPlatform.system};
 in {
   strixvim = final.callPackage ./pkgs/strixvim.nix {
     inherit (pkgs-locked) wrapNeovimUnstable neovimUtils;
