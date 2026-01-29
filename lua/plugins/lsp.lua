@@ -65,6 +65,7 @@ return {
 		linters = {
 			nix = { "statix" },
 			gdscript = { "gdlint" },
+			python = { "pylint" },
 		},
 		formatters = {
 			lua = { "stylua" },
@@ -96,10 +97,10 @@ return {
 		local blink = require("blink.cmp")
 		for server, config in pairs(opts.servers) do
 			config.capabilities = blink.get_lsp_capabilities(config.capabilities)
-      vim.lsp.enable(server)
-      if config then
-			  vim.lsp.config(server,config)
-      end
+			vim.lsp.enable(server)
+			if config then
+				vim.lsp.config(server, config)
+			end
 		end
 
 		-- SECTION: blink
@@ -185,6 +186,10 @@ return {
 				require("lint").try_lint()
 			end,
 		})
+
+		-- python linking
+		require("lint").linters.pylint.cmd = "python"
+		require("lint").linters.pylint.args = { "-m", "pylint", "-f", "json" }
 
 		-- SECTION: formatting
 		local conform = require("conform")
