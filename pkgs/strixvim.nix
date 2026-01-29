@@ -2,6 +2,7 @@
   stdenv,
   lib,
   gcc,
+  tree-sitter,
   gnumake,
   ripgrep,
   fzf,
@@ -42,6 +43,7 @@
   runDeps = [
     gcc
     gnumake
+    tree-sitter
     ripgrep
     fzf
     lazygit

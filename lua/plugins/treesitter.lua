@@ -2,8 +2,8 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	version = "main",
 	event = { "BufReadPre", "BufNewFile" },
+	lazy = false,
 	build = ":TSUpdate",
-
 	lazy = false,
 	config = function()
 		vim.api.nvim_create_autocmd("FileType", {
